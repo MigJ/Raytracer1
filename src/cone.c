@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Sat Feb 25 17:33:22 2017 Joubert Miguel
+** Last update Mon Feb 27 16:04:30 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -28,5 +28,4 @@ float	intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector, float semiangle)
   else k = ((-b + sqrt(delta)) / (2.0 * a) < (-b - sqrt(delta)) /(2.0 * a))
 	 ? (-b + sqrt(delta)) / (2.0 * a) : (-b - sqrt(delta)) / (2.0 * a);
   return (k);
-  
 }
