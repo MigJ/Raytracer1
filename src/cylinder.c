@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Mon Feb 27 16:05:36 2017 Joubert Miguel
+** Last update Tue Feb 28 00:00:33 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -29,4 +29,17 @@ float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius
 	 ? (-b + sqrt(delta)) / (2.0 * a) : (-b - sqrt(delta)) / (2.0 * a);
   if (k < 0) return (-1);
   return (k);
+}
+
+sfVector3f      get_normal_cylinder(sfVector3f intersection_point)
+{
+  float         norme;
+
+  norme = sqrt(pow(intersection_point.x, 2.0) +
+	       pow(intersection_point.y, 2.0) +pow(intersection_point.z, 2.0));
+  if (norme == 0) return (intersection_point);
+  intersection_point.x /= norme;
+  intersection_point.y /= norme;
+  intersection_point.z /= norme;
+  return (intersection_point);
 }
