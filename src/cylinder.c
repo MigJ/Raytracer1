@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Tue Feb 28 00:00:33 2017 Joubert Miguel
+** Last update Thu Mar  2 14:29:34 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -33,13 +33,10 @@ float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius
 
 sfVector3f      get_normal_cylinder(sfVector3f intersection_point)
 {
-  float         norme;
+  sfVector3f	norm;
 
-  norme = sqrt(pow(intersection_point.x, 2.0) +
-	       pow(intersection_point.y, 2.0) +pow(intersection_point.z, 2.0));
-  if (norme == 0) return (intersection_point);
-  intersection_point.x /= norme;
-  intersection_point.y /= norme;
-  intersection_point.z /= norme;
-  return (intersection_point);
+  norm.x = intersection_point.x;
+  norm.y = intersection_point.y;
+  norm.z = 0;
+  return (norm);
 }
