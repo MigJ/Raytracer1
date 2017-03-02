@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 15:44:19 2017 Joubert Miguel
-** Last update Thu Mar  2 14:30:05 2017 Joubert Miguel
+** Last update Thu Mar  2 14:54:02 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -41,5 +41,10 @@ float	intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
 
 sfVector3f	get_normal_sphere(sfVector3f intersection_point)
 {
-  return (intersection_point);
+  sfVector3f	norm;
+
+  norm.x = intersection_point.x;
+  norm.y = intersection_point.y;
+  norm.z = intersection_point.z;
+  return (norm);
 }
