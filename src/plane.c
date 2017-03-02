@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 16:53:59 2017 Joubert Miguel
-** Last update Thu Mar  2 14:57:04 2017 Joubert Miguel
+** Last update Thu Mar  2 16:08:41 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -20,7 +20,7 @@ sfVector3f	get_normal_plane(int upward)
 {
   sfVector3f	norm;
 
-  norm.x = norm.z = 0;
-  norm.y = upward;
+  norm.x = norm.y = 0.0f;
+  norm.z = (float)upward;
   return (norm);
 }

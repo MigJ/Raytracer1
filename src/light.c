@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 00:13:02 2017 Joubert Miguel
-** Last update Thu Mar  2 14:51:19 2017 Joubert Miguel
+** Last update Thu Mar  2 15:44:57 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -29,5 +29,6 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
   normal_vector.z = (norme2 != 0) ? normal_vector.z / norme2 : normal_vector.z;
   coef = normal_vector.x * light_vector.x
     + normal_vector.y * light_vector.y + normal_vector.z * light_vector.z;
+  if (coef < 0) return (0);
   return (coef);
 }
