@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Thu Mar  9 14:23:52 2017 Joubert Miguel
+** Last update Thu Mar  9 15:49:35 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -45,6 +45,6 @@ sfVector3f      get_normal_cylinder(sfVector3f intersection_point)
 
   norm.x = intersection_point.x;
   norm.y = intersection_point.y;
-  norm.z = 0;
+  norm.z = 0.0f;
   return (norm);
 }
