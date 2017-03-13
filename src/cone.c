@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Thu Mar  9 15:50:10 2017 Joubert Miguel
+** Last update Mon Mar 13 15:35:42 2017 Joubert Miguel
 */
 
 #include <SFML/Graphics.h>
@@ -20,6 +20,7 @@ float	intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector, float semiangle)
   float	x1;
   float	x2;
 
+  if (semiangle == 90.0f) return (-1);
   semiangle = (semiangle * M_PI) / 180.0f;
   a = pow(dir_vector.x, 2.0) + pow(dir_vector.y, 2.0)
     - pow(dir_vector.z, 2.0) * pow(tan(semiangle), 2.0);
