@@ -5,10 +5,10 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 15:36:54 2017 Joubert Miguel
-** Last update Sat Feb 25 15:43:31 2017 Joubert Miguel
+** Last update Tue Mar 14 18:31:28 2017 Joubert Miguel
 */
 
-#include <SFML/Graphics.h>
+#include "../include/my.h"
 
 sfVector3f	calc_dir_vector(float dist_to_plane,
 				sfVector2i screen_size, sfVector2i screen_pos)

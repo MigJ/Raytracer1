@@ -5,10 +5,10 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Mon Feb 27 16:36:42 2017 Joubert Miguel
-** Last update Mon Feb 27 16:41:42 2017 Joubert Miguel
+** Last update Tue Mar 14 18:33:53 2017 Joubert Miguel
 */
 
-#include <SFML/Graphics.h>
+#include "../include/my.h"
 
 sfVector3f	translate(sfVector3f to_translate, sfVector3f translations)
 {

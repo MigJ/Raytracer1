@@ -5,20 +5,39 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Thu Mar  9 15:49:35 2017 Joubert Miguel
+** Last update Wed Mar 15 01:19:36 2017 Joubert Miguel
 */
 
-#include <SFML/Graphics.h>
-#include <math.h>
+#include "../include/my.h"
 
-float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
+t_attributs		get_cylinder(t_attributs att)
 {
-  float	a;
-  float	b;
-  float	c;
-  float	delta;
-  float	x1;
-  float	x2;
+  att.color.b = 255;
+  att.color.a = 255;
+  att.eye_pos.x = -1000;
+  att.eye_pos.y = 0;
+  att.eye_pos.z = 0;
+  att.dist_to_plane = 400;
+  att.screen_size.x = 550;
+  att.screen_size.y = 450;
+  att.screen_pos.x = 0;
+  att.screen_pos.y = 0;
+  att.light_vector.x = 1000;
+  att.light_vector.y = 1500;
+  att.light_vector.z = 0;
+  att.semiangle = 100;
+  return (att);
+}
+
+float			intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector,
+					   float radius)
+{
+  float			a;
+  float			b;
+  float			c;
+  float			delta;
+  float			x1;
+  float			x2;
 
   a = pow(dir_vector.x, 2.0) + pow(dir_vector.y, 2.0);
   b = 2 * (dir_vector.x * eye_pos.x + dir_vector.y * eye_pos.y);
@@ -39,12 +58,54 @@ float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius
   return (0);
 }
 
-sfVector3f      get_normal_cylinder(sfVector3f intersection_point)
+sfVector3f		get_normal_cylinder(sfVector3f intersection_point)
 {
-  sfVector3f	norm;
+  sfVector3f		norm;
 
   norm.x = intersection_point.x;
   norm.y = intersection_point.y;
   norm.z = 0.0f;
   return (norm);
+}
+
+void			radius_loop_cylinder(t_attributs att,
+					     t_my_framebuffer *framebuffer)
+{
+  while (att.screen_pos.y != att.screen_size.y)
+    {
+      while (att.screen_pos.x != att.screen_size.x)
+	{
+	  att.dir_eye_vector =
+	    calc_dir_vector(att.dist_to_plane, att.screen_size, att.screen_pos);
+	  if ((att.dist_to_light =
+	       intersect_cylinder(att.eye_pos, att.dir_eye_vector, att.semiangle)) > 0)
+	    {
+	      att.intersection_point =
+		calc_dir_vector(att.dist_to_light, att.screen_size, att.screen_pos);
+	      att.normal = get_normal_cylinder(att.intersection_point);
+	      att.color.b *= get_light_coef(att.light_vector, att.normal);
+	      my_put_pixel(framebuffer, att.screen_pos.x, att.screen_pos.y, att.color);
+	    }
+	  att.color.b = 255;
+	  att.screen_pos.x++;
+	}
+      att.screen_pos.x = 0;
+      att.screen_pos.y++;
+    }
+}
+
+void			drawing_cylinder(sfRenderWindow *window, sfSprite *sprite,
+					 t_my_framebuffer *framebuffer)
+{
+  sfTexture		*texture;
+  t_attributs		att;
+
+  att = get_cylinder(att);
+  texture = sfTexture_create(SCREEN_WIDTH, SCREEN_HEIGHT);
+  sfSprite_setTexture(sprite, texture, sfTrue);
+  radius_loop_cylinder (att, framebuffer);
+  sfTexture_updateFromPixels(texture, framebuffer->pixels,
+			     SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+  sfRenderWindow_drawSprite(window, sprite, NULL);
+  sfRenderWindow_display(window);
 }

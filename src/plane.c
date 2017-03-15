@@ -5,10 +5,10 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 16:53:59 2017 Joubert Miguel
-** Last update Thu Mar  9 15:52:44 2017 Joubert Miguel
+** Last update Tue Mar 14 18:33:12 2017 Joubert Miguel
 */
 
-#include <SFML/Graphics.h>
+#include "../include/my.h"
 
 float	intersect_plane(sfVector3f eye_pos, sfVector3f dir_vector)
 {

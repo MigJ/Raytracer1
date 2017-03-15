@@ -5,11 +5,10 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 00:13:02 2017 Joubert Miguel
-** Last update Thu Mar  2 17:16:06 2017 Joubert Miguel
+** Last update Tue Mar 14 18:32:34 2017 Joubert Miguel
 */
 
-#include <SFML/Graphics.h>
-#include <math.h>
+#include "../include/my.h"
 
 float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
 {
