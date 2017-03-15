@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 18:23:37 2017 Joubert Miguel
-** Last update Wed Mar 15 01:20:49 2017 Joubert Miguel
+** Last update Wed Mar 15 11:53:41 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -51,7 +51,7 @@ int		open_window(sfRenderWindow *window, sfSprite *sprite,
 	  if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
 	    sfRenderWindow_close(window);
 	}
-      drawing_cone(window, sprite, framebuffer);
+      drawing_sphere(window, sprite, framebuffer);
     }
   return (0);
 }

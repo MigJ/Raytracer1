@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Wed Mar 15 01:19:36 2017 Joubert Miguel
+** Last update Wed Mar 15 11:52:09 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -14,6 +14,8 @@ t_attributs		get_cylinder(t_attributs att)
 {
   att.color.b = 255;
   att.color.a = 255;
+  att.color.r = 0;
+  att.color.g = 0;
   att.eye_pos.x = -1000;
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
@@ -22,8 +24,8 @@ t_attributs		get_cylinder(t_attributs att)
   att.screen_size.y = 450;
   att.screen_pos.x = 0;
   att.screen_pos.y = 0;
-  att.light_vector.x = 1000;
-  att.light_vector.y = 1500;
+  att.light_vector.x = 100;
+  att.light_vector.y = 100;
   att.light_vector.z = 0;
   att.semiangle = 100;
   return (att);

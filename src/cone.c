@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Wed Mar 15 01:18:10 2017 Joubert Miguel
+** Last update Wed Mar 15 11:52:21 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -14,6 +14,8 @@ t_attributs		get_cone(t_attributs att)
 {
   att.color.b = 255;
   att.color.a = 255;
+  att.color.r =0;
+  att.color.g =0;
   att.eye_pos.x = -1000;
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
