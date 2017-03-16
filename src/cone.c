@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Wed Mar 15 11:52:21 2017 Joubert Miguel
+** Last update Thu Mar 16 13:13:09 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -64,7 +64,7 @@ float			intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
 sfVector3f		get_normal_cone(sfVector3f intersection_point, float semiangle)
 {
   semiangle = (semiangle * M_PI) / 180.0f;
-  intersection_point.z = -intersection_point.z * semiangle;
+  intersection_point.z = -intersection_point.z * tan(semiangle);
   return (intersection_point);
 }
 
