@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 18:23:37 2017 Joubert Miguel
-** Last update Wed Mar 15 22:35:12 2017 Joubert Miguel
+** Last update Fri Mar 17 23:05:43 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -18,14 +18,15 @@ void		clear_all_pixels(t_my_framebuffer *framebuffer)
   i = j = 0;
   while (i <= SCREEN_WIDTH)
     {
-      while (j < SCREEN_HEIGHT / 2)
+      while (j < SCREEN_HEIGHT / 1.3)
 	{
 	  my_put_pixel(framebuffer, i, j, sfBlack);
 	  j++;
 	}
       while (j <= SCREEN_HEIGHT)
 	{
-	  my_put_pixel(framebuffer, i, j, sfWhite);
+	  (i < 50 || i > 500) ? my_put_pixel(framebuffer, i, j, sfBlack) :
+	    my_put_pixel(framebuffer, i, j, sfWhite);
 	  j++;
 	}
       j = 0;
@@ -51,7 +52,7 @@ int		open_window(sfRenderWindow *window, sfSprite *sprite,
 	  if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
 	    sfRenderWindow_close(window);
 	}
-      drawing_sphere(window, sprite, framebuffer);
+      drawing_cone(window, sprite, framebuffer);
     }
   return (0);
 }

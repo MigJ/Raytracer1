@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Wed Mar 15 00:18:30 2017 Joubert Miguel
-** Last update Wed Mar 15 00:43:15 2017 Joubert Miguel
+** Last update Fri Mar 17 18:37:12 2017 Joubert Miguel
 */
 
 #ifndef _ATTRIBUTS_H_
@@ -24,6 +24,8 @@ typedef struct	s_attributs
   float		dist_to_plane;
   float		dist_to_light;
   float		semiangle;
+  float		limit_top;
+  float		limit_bottom;
 }t_attributs;
 
 #endif /* _ATTRIBUTS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 15:44:19 2017 Joubert Miguel
-** Last update Wed Mar 15 11:52:36 2017 Joubert Miguel
+** Last update Fri Mar 17 19:19:58 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -16,7 +16,7 @@ t_attributs		get_sphere(t_attributs att)
   att.color.a = 255;
   att.color.r = 0;
   att.color.g = 0;
-  att.eye_pos.x = -1000;
+  att.eye_pos.x = -500;
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
   att.dist_to_plane = 400;

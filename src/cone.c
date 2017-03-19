@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Thu Mar 16 13:13:09 2017 Joubert Miguel
+** Last update Fri Mar 17 19:14:44 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -19,15 +19,17 @@ t_attributs		get_cone(t_attributs att)
   att.eye_pos.x = -1000;
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
-  att.dist_to_plane = 400;
+  att.dist_to_plane = 100;
   att.screen_size.x = 550;
   att.screen_size.y = 450;
   att.screen_pos.x = 0;
   att.screen_pos.y = 0;
-  att.light_vector.x = 1000;
-  att.light_vector.y = 1500;
+  att.light_vector.x = 100;
+  att.light_vector.y = 10;
   att.light_vector.z = 0;
   att.semiangle = 20;
+  att.limit_top = 150;
+  att.limit_bottom = -150;
   return (att);
 }
 
@@ -83,7 +85,9 @@ void			radius_loop_cone(t_attributs att, t_my_framebuffer *framebuffer)
 		calc_dir_vector(att.dist_to_light, att.screen_size, att.screen_pos);
 	      att.normal = get_normal_cone(att.intersection_point, att.semiangle);
 	      att.color.b *= get_light_coef(att.light_vector, att.normal);
-	      my_put_pixel(framebuffer, att.screen_pos.x, att.screen_pos.y, att.color);
+	      if (att.intersection_point.z <= att.limit_top
+		  && att.intersection_point.z >= att.limit_bottom)
+		my_put_pixel(framebuffer, att.screen_pos.x, att.screen_pos.y, att.color);
 	    }
 	  att.color.b = 255;
 	  att.screen_pos.x++;
