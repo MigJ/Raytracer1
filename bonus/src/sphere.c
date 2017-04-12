@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 15:44:19 2017 Joubert Miguel
-** Last update Tue Mar 21 13:50:11 2017 Joubert Miguel
+** Last update Sat Mar 18 02:24:21 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -19,9 +19,9 @@ t_attributs		get_sphere(t_attributs att)
   att.eye_pos.x = -500;
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
-  att.dist_to_plane = 400;
-  att.screen_size.x = 550;
-  att.screen_size.y = 450;
+  att.dist_to_plane = 200;
+  att.screen_size.x = 850;
+  att.screen_size.y = 650;
   att.screen_pos.x = 0;
   att.screen_pos.y = 0;
   att.light_vector.x = 20;
@@ -95,15 +95,31 @@ void			radius_loop(t_attributs att, t_my_framebuffer *framebuffer)
 void			drawing_sphere(sfRenderWindow *window, sfSprite *sprite,
 				       t_my_framebuffer *framebuffer)
 {
+  sfSprite              *spr_cr7;
   sfTexture		*texture;
+  sfTexture             *cr7;
+  sfVector2f		cr7_pos;
+  sfVector2f		pos;
   t_attributs		att;
 
+  pos.x = 250;
+  pos.y = 0;
+  cr7_pos.x = -20;
+  cr7_pos.y = 0;
   att = get_sphere(att);
+  cr7 = sfTexture_createFromFile("rsrcs/cr7.jpg", NULL);
   texture = sfTexture_create(SCREEN_WIDTH, SCREEN_HEIGHT);
+  spr_cr7 = sfSprite_create();
   sfSprite_setTexture(sprite, texture, sfTrue);
+  sfSprite_setTexture(spr_cr7, cr7, sfTrue);
   radius_loop(att, framebuffer);
   sfTexture_updateFromPixels(texture, framebuffer->pixels,
 			     SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+  sfTexture_updateFromPixels(cr7, framebuffer->pixels,
+			     0, 0, 50, 50);
+  sfSprite_setPosition(spr_cr7, cr7_pos);
+  sfSprite_setPosition(sprite, pos);
   sfRenderWindow_drawSprite(window, sprite, NULL);
+  sfRenderWindow_drawSprite(window, spr_cr7, NULL);
   sfRenderWindow_display(window);
 }

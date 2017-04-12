@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:19:54 2017 Joubert Miguel
-** Last update Tue Mar 21 15:37:54 2017 Joubert Miguel
+** Last update Sat Mar 18 13:02:53 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -20,8 +20,8 @@ t_attributs		get_cone(t_attributs att)
   att.eye_pos.y = 0;
   att.eye_pos.z = 0;
   att.dist_to_plane = 100;
-  att.screen_size.x = 550;
-  att.screen_size.y = 450;
+  att.screen_size.x = 850;
+  att.screen_size.y = 650;
   att.screen_pos.x = 0;
   att.screen_pos.y = 0;
   att.light_vector.x = 100;
@@ -33,10 +33,10 @@ t_attributs		get_cone(t_attributs att)
   return (att);
 }
 
-float			intersect_cone(sfVector3f eye_pos,
-				       sfVector3f dir_vector, float semiangle)
+float			intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
+				       float semiangle)
 {
-  t_delta		dis;
+  t_delta			dis;
 
   if (semiangle == 90.0f) return (-1);
   semiangle = (semiangle * M_PI) / 180.0f;
@@ -63,16 +63,14 @@ float			intersect_cone(sfVector3f eye_pos,
   return (0);
 }
 
-sfVector3f		get_normal_cone(sfVector3f intersection_point,
-					float semiangle)
+sfVector3f		get_normal_cone(sfVector3f intersection_point, float semiangle)
 {
   semiangle = (semiangle * M_PI) / 180.0f;
   intersection_point.z = -intersection_point.z * tan(semiangle);
   return (intersection_point);
 }
 
-void			radius_loop_cone(t_attributs att,
-					 t_my_framebuffer *framebuffer)
+void			radius_loop_cone(t_attributs att, t_my_framebuffer *framebuffer)
 {
   while (att.screen_pos.y != att.screen_size.y)
     {
@@ -81,9 +79,7 @@ void			radius_loop_cone(t_attributs att,
 	  att.dir_eye_vector =
 	    calc_dir_vector(att.dist_to_plane, att.screen_size, att.screen_pos);
 	  if ((att.dist_to_light =
-	       intersect_cone(att.eye_pos,
-			      att.dir_eye_vector,
-			      att.semiangle)) > 0)
+	       intersect_cone(att.eye_pos, att.dir_eye_vector, att.semiangle)) > 0)
 	    {
 	      att.intersection_point =
 		calc_dir_vector(att.dist_to_light, att.screen_size, att.screen_pos);

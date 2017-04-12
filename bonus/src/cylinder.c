@@ -5,7 +5,7 @@
 ** Login   <miguel.joubert@epitech.eu>
 ** 
 ** Started on  Sat Feb 25 17:00:24 2017 Joubert Miguel
-** Last update Mon Mar 20 02:08:14 2017 Joubert Miguel
+** Last update Sun Mar 19 20:37:17 2017 Joubert Miguel
 */
 
 #include "../include/my.h"
@@ -20,8 +20,8 @@ t_attributs		get_cylinder(t_attributs att)
   att.eye_pos.y = 0;
   att.eye_pos.z = 200;
   att.dist_to_plane = 200;
-  att.screen_size.x = 550;
-  att.screen_size.y = 450;
+  att.screen_size.x = 850;
+  att.screen_size.y = 650;
   att.screen_pos.x = 0;
   att.screen_pos.y = 0;
   att.light_vector.x = 1000;
@@ -103,15 +103,27 @@ void			radius_loop_cylinder(t_attributs att,
 void			drawing_cylinder(sfRenderWindow *window, sfSprite *sprite,
 					 t_my_framebuffer *framebuffer)
 {
+  sfSprite		*spr_mario;
   sfTexture		*texture;
+  sfTexture		*mario;
+  sfVector2f		mario_pos;
   t_attributs		att;
 
+  mario_pos.x = 400;
+  mario_pos.y = 130;
   att = get_cylinder(att);
+  mario = sfTexture_createFromFile("rsrcs/mario.jpg", NULL);
   texture = sfTexture_create(SCREEN_WIDTH, SCREEN_HEIGHT);
+  spr_mario = sfSprite_create();
   sfSprite_setTexture(sprite, texture, sfTrue);
+  sfSprite_setTexture(spr_mario, mario, sfTrue);
   radius_loop_cylinder (att, framebuffer);
   sfTexture_updateFromPixels(texture, framebuffer->pixels,
 			     SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+  sfTexture_updateFromPixels(mario, framebuffer->pixels,
+			     0, 0, 50, 50);
+  sfSprite_setPosition(spr_mario, mario_pos);
   sfRenderWindow_drawSprite(window, sprite, NULL);
+  sfRenderWindow_drawSprite(window, spr_mario, NULL);
   sfRenderWindow_display(window);
 }
