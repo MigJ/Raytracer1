@@ -15,3 +15,5 @@ For instance:
 (a game is hidden in the cylinder view, play space for mor fun !)
 
 Have Fun
+
+Note: 22/20
